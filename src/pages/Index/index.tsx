@@ -5,10 +5,9 @@ import { connect } from 'react-redux';
 
 import styles from './index.less';
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoieGlhb25pdSIsImEiOiJjamsxNm9oczMwNzk4M3dsYmNsdjIxYm4xIn0.xaNqu5WkkTDwuBR2zk2M9Q'; // eslint-disable-line
 const width = 800
 const height = 800
-
+console.log('MAPBOX_TOKEN: ', MAPBOX_TOKEN);
 export interface IPropsMap {
   id: string;
   width: number;
