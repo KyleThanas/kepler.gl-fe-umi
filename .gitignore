@@ -1,0 +1,38 @@
+node_modules
+npm-debug.log*
+yarn-error.log
+yarn.lock
+package-lock.json
+
+logs
+run
+dist
+*.umi
+
+app.js
+agent.js
+app/**/*.js
+config/**/*.js
+
+app.d.ts
+agent.d.ts
+app/**/*.d.ts
+config/**/*.d.ts
+src/**/*.less.d.ts
+
+
+# umi
+/src/.umi
+/src/.umi-production
+/src/.umi-test
+/.env.local
+
+# file
+*.vscode
+*.idea
+*.DS_Store
+*.coverage
+*.cache
+
+# 我的文件
+/temp

@@ -1,0 +1,37 @@
+@import '~reset-css/less/reset.less';
+
+html,
+body {
+  box-sizing: border-box;
+  appearance: none;
+  // user-select: none;
+  text-size-adjust: none;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+* {
+  appearance: inherit;
+  box-sizing: inherit;
+  &:before,
+  &:after {
+    appearance: inherit;
+    box-sizing: inherit;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    outline: none;
+  }
+}
+
+input {
+  user-select: auto;
+}
