@@ -9,10 +9,10 @@ run
 dist
 *.umi
 
-app.js
-agent.js
-app/**/*.js
-config/**/*.js
+# app.js
+# agent.js
+# app/**/*.js
+# config/**/*.js
 
 app.d.ts
 agent.d.ts
