@@ -7,7 +7,12 @@ module.exports = [
       // 首页
       {
         path: '/',
-        component: '@/pages/Index/index',
+        component: '@/pages/Index',
+      },
+      // 测试页
+      {
+        path: '/demo',
+        component: '@/pages/Demo',
       },
       // 公司页
       {

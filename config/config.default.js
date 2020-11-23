@@ -7,3 +7,13 @@ exports.view = {
     '.tpl': 'nunjucks',
   },
 };
+
+exports.hybrid = {
+  debug: false,
+  manifest: {},
+  devServer: {
+    port: 5000,
+    command: 'node -v',
+    environment: {},
+  },
+};

@@ -1,22 +1,19 @@
 import React, { useRef } from 'react';
 import { history as router } from 'umi';
 // import KeplerGl from 'kepler.gl';
-import { connect } from 'react-redux';
-
+import store from '@/store';
+import { Provider, connect } from 'react-redux';
 import styles from './index.less';
 
-const width = 800
-const height = 800
-console.log('MAPBOX_TOKEN: ', MAPBOX_TOKEN);
-export interface IPropsMap {
-  id: string;
-  width: number;
-  height: number;
-  mapboxApiAccessToken: string;
-}
+// export interface IPropsMap {
+//   id: string;
+//   width: number;
+//   height: number;
+//   mapboxApiAccessToken: string;
+// }
 
 // const Map: React.FC<IPropsMap> = props => {
-//   const { width, height } = props;
+//   const { width, height, mapboxApiAccessToken: MAPBOX_TOKEN } = props;
 
 //   return <KeplerGl
 //     id="foo"
@@ -33,21 +30,33 @@ const IndexPage: React.FC = () => {
     router.push({ pathname: `/company/${inputRef.current.value}`, query: { xnkey: 'index' } });
   }
 
+  const handleGoDemo = () => {
+    router.push({ pathname: `/demo/` });
+  }
+
+  console.log('store: ', store);
   return (
-    <div>
+    <Provider store={store}>
       <h1 className={styles.title}>Page index</h1>
-      <input ref={inputRef} />
-      <div onClick={handleGoCompany}>
-        跳转公司页
+      <div>
+        <input ref={inputRef} />
+        <div onClick={handleGoCompany}>
+          跳转公司页
+        </div>
       </div>
-      {/* <Map id="map1" width={width} height={height} mapboxApiAccessToken={MAPBOX_TOKEN} /> */}
-    </div>
+      <div>
+        <div onClick={handleGoDemo}>
+          Demo
+        </div>
+      </div>
+      {/* <Map id="map1" width={800} height={800} mapboxApiAccessToken={MAPBOX_TOKEN} /> */}
+    </Provider>
   );
 }
 
-export default IndexPage
-
-// const mapStateToProps = (state: any) => state;
-// const dispatchToProps = (dispatch: any) => ({ dispatch });
+// const mapStateToProps = state => state;
+// const dispatchToProps = dispatch => ({ dispatch });
 
 // export default connect(mapStateToProps, dispatchToProps)(IndexPage);
+
+export default IndexPage

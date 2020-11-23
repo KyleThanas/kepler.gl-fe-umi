@@ -18,38 +18,60 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
-import { browserHistory } from 'react-router';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import keplerGlReducer, { uiStateUpdaters } from 'kepler.gl/reducers';
 import { enhanceReduxMiddleware } from 'kepler.gl/middleware';
-import thunk from 'redux-thunk';
-// eslint-disable-next-line no-unused-vars
 import window from 'global/window';
+import appReducer from './app-reducer';
 
-import demoReducer from './reducers/index';
+const customizedKeplerGlReducer = keplerGlReducer
+  .initialState({
+    uiState: {
+      // hide side panel to disallower user customize the map
+      readOnly: true,
+
+      // customize which map control button to show
+      mapControls: {
+        ...uiStateUpdaters.DEFAULT_MAP_CONTROLS,
+        visibleLayers: {
+          show: false,
+        },
+        mapLegend: {
+          show: true,
+          active: true,
+        },
+        toggle3d: {
+          show: false,
+        },
+        splitMap: {
+          show: false,
+        },
+      },
+    },
+    mapId: 'keplerMap',
+  })
+  // handle additional actions
+  .plugin({
+    HIDE_AND_SHOW_SIDE_PANEL: state => ({
+      ...state,
+      uiState: {
+        ...state.uiState,
+        readOnly: !state.uiState.readOnly,
+      },
+    }),
+  });
 
 const reducers = combineReducers({
-  demo: demoReducer,
-  routing: routerReducer,
+  keplerGl: customizedKeplerGlReducer,
+  app: appReducer,
 });
 
-export const middlewares = enhanceReduxMiddleware([thunk, routerMiddleware(browserHistory)]);
-
-export const enhancers = [applyMiddleware(...middlewares)];
+const middlewares = enhanceReduxMiddleware([]);
+const enhancers = [applyMiddleware(...middlewares)];
 
 const initialState = {};
 
-// eslint-disable-next-line prefer-const
-let composeEnhancers = compose;
-
-/**
- * comment out code below to enable Redux Devtools
- */
-
-if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
-  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-    actionsBlacklist: ['@@kepler.gl/MOUSE_MOVE', '@@kepler.gl/UPDATE_MAP', '@@kepler.gl/LAYER_HOVER'],
-  });
-}
+// add redux devtools
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default createStore(reducers, initialState, composeEnhancers(...enhancers));
