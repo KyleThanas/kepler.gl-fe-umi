@@ -9,11 +9,6 @@ module.exports = [
         path: '/',
         component: '@/pages/Index',
       },
-      // 测试页
-      {
-        path: '/demo',
-        component: '@/pages/Demo',
-      },
       // 公司页
       {
         path: '/company',

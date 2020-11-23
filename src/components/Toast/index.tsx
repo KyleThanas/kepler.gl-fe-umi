@@ -8,7 +8,7 @@ const MessageComponent: React.FC<{
   message: string;
   onClick: () => void;
 }> = ({ message, onClick }) => (
-  <MaskBasic transparent>
+  <MaskBasic isTransparent>
     <MaskCenter>
       <div className={styles.messageContent} onClick={onClick}>
         {message}
@@ -18,7 +18,7 @@ const MessageComponent: React.FC<{
 );
 
 const LoadingComponent: React.FC = () => (
-  <MaskBasic transparent>
+  <MaskBasic isTransparent>
     <MaskCenter>
       <div className={styles.loadingContent} />
     </MaskCenter>

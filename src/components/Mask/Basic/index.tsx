@@ -5,8 +5,8 @@ export interface IProps {
   isTransparent?: boolean;
 }
 
-const MaskBasic: React.FC<IProps> = () => {
-  return <div className={styles.container} />;
+const MaskBasic: React.FC<IProps> = ({ children }) => {
+  return <div className={styles.container}>{children}</div>;
 };
 
 export default MaskBasic;

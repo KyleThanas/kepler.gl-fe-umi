@@ -7,3 +7,11 @@ export interface ICompanyPageProps {
     pathname: string;
   };
 }
+export interface IKeplerProps {
+  app: {
+    appName: string;
+    loaded: boolean;
+  };
+  dispatch: any;
+  keplerGl: any;
+}
