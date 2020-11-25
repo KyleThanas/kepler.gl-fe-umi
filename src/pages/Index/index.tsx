@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import DocumentTitle from 'react-document-title';
-import { IGetInitialProps, useIntl, setLocale } from 'umi';
+import { IGetInitialProps, useIntl, getLocale, setLocale } from 'umi';
 import Toast from '@/components/Toast';
 import Line from '@/components/Line';
 import ButtonBasic from '@/components/Botton/Basic';
@@ -27,7 +27,8 @@ const IndexPage: React.FC<IProps> = (props) => {
   }, []);
 
   const handleGoCompany = () => {
-    window.location.href = `/company/${inputRef.current.value}?xnkey=index`
+    const currentLocale = getLocale()
+    window.location.href = `/company/${inputRef.current.value}?locale=${currentLocale}&xnkey=index`
     // router.push({ pathname: `/company/${inputRef.current.value}`, query: { xnkey: 'index' } });
   }
 

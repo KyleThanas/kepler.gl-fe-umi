@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "startEgg": "npm run egg:dev",
-    "start": "umi dev --port 8080",
+    "start": "umi dev --port 8888",
     "egg:dev": "egg-bin dev --port 8080",
     "build": "umi build",
     "postinstall": "umi generate tmp",

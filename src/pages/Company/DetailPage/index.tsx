@@ -15,18 +15,25 @@ interface IProps {
 }
 
 const CompanyPage: React.FC<ICompanyPageProps & IProps> = props => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const intl = useIntl();
   const [pageTitle, setPageTitle] = useState('')
 
   useEffect(() => {
     const {
       match: {
-        params: { companyId },
+        params: { companyId, },
+      },
+      location: {
+        query: {
+          locale = 'zh-CN'
+        },
       },
       data: {
         title
       }
     } = props;
+    setLocale(locale)
     setPageTitle(companyId + title)
   }, [])
 
@@ -34,12 +41,11 @@ const CompanyPage: React.FC<ICompanyPageProps & IProps> = props => {
     <DocumentTitle title={pageTitle}>
       <Provider store={store}>
         <>
-          {intl.formatMessage({ id: 'WELCOME_TO_UMI_WORLD', }, { name: '旅行者', })}
+          {/* {intl.formatMessage({ id: 'WELCOME_TO_UMI_WORLD' }, { name: '旅行者' })} */}
           <KeplerMap />
         </>
       </Provider>
     </DocumentTitle>
-
   );
 }
 
