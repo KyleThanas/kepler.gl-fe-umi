@@ -8,6 +8,7 @@ module.exports = [
       {
         path: '/',
         component: '@/pages/Index',
+        title: '首页',
       },
       // 公司页
       {

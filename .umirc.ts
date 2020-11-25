@@ -8,7 +8,7 @@ const MAPBOX_TOKEN = 'pk.eyJ1IjoieGlhb25pdSIsImEiOiJjamsxNm9oczMwNzk4M3dsYmNsdjI
 
 export default defineConfig({
   alias: {
-    '@xn': path.resolve(__dirname, './src'),
+    '@': path.resolve(__dirname, './src'),
   },
   nodeModulesTransform: {
     type: isProd ? 'all' : 'none',
@@ -26,9 +26,20 @@ export default defineConfig({
       },
     ],
   ],
+  ssr: {},
   manifest: {},
   ignoreMomentLocale: true,
   hash: isProd,
+  base: './',
+  // publicPath: './',
+  history: {
+    type: 'browser',
+  },
+  locale: {
+    default: 'zh-CN',
+    baseNavigator: true,
+    baseSeparator: '-',
+  },
   devtool: isProd ? 'hidden-source-map' : 'source-map',
   define: {
     MAPBOX_TOKEN,
