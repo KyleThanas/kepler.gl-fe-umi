@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import DocumentTitle from 'react-document-title';
 import { Provider } from 'react-redux';
-import { IGetInitialProps, useIntl, setLocale } from 'umi';
+import { IGetInitialProps, setLocale } from 'umi';
 import { ICompanyPageProps } from '@/types/common';
 import { sleep } from '@/utils/sleep';
-import store from '@/store';
+import store from './store/store';
 import KeplerMap from './keplerMap';
 
 interface IProps {
@@ -15,8 +15,11 @@ interface IProps {
 }
 
 const CompanyPage: React.FC<ICompanyPageProps & IProps> = props => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const intl = useIntl();
+  // 国际化
+  // import { useIntl } from 'umi';
+  // const intl = useIntl();
+  // { intl.formatMessage({ id: 'WELCOME_TO_UMI_WORLD' }, { name: '旅行者' }) }
+
   const [pageTitle, setPageTitle] = useState('')
 
   useEffect(() => {
@@ -41,7 +44,6 @@ const CompanyPage: React.FC<ICompanyPageProps & IProps> = props => {
     <DocumentTitle title={pageTitle}>
       <Provider store={store}>
         <>
-          {/* {intl.formatMessage({ id: 'WELCOME_TO_UMI_WORLD' }, { name: '旅行者' })} */}
           <KeplerMap />
         </>
       </Provider>
