@@ -6,28 +6,28 @@ import { theme } from 'kepler.gl/styles';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import { ThemeProvider } from 'styled-components';
 import { IKeplerProps } from '@/types/common'
-import filterData from './data/kepler-gl_new dataset--filter.csv';
+import configHive from './configurations/config-hive';
+import configGalaxy from './configurations/config-galaxy';
 import sampleData from './data/sample-data';
-// import config from './configurations/config';
+import keplerglData from './data/keplergl-data.json';
 
 const KeplerMapContainer: React.FC<IKeplerProps> = props => {
   const { dispatch } = props;
 
   useEffect(() => {
-    dispatch(
-      wrapTo(
-        'map1',
-        addDataToMap({
-          // filterData sampleData,
-          datasets: sampleData,
-          // config,
-          option: {
-            centerMap: true,
-            readOnly: false
-          },
-        })
-      )
-    );
+    dispatch(wrapTo(
+      'map1',
+      addDataToMap({
+        // sampleData keplerglData
+        datasets: sampleData,
+        // configGalaxy configGalaxy
+        config: configGalaxy,
+        option: {
+          centerMap: true,
+          readOnly: false
+        },
+      })
+    ));
   }, [])
 
   return (

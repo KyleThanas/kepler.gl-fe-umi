@@ -12,10 +12,10 @@ export interface ICompanyPageProps {
 }
 
 export interface IKeplerProps {
-  app: {
+  app?: {
     appName: string;
     loaded: boolean;
   };
-  dispatch: any;
-  keplerGl: any;
+  dispatch?: any;
+  keplerGl?: any;
 }

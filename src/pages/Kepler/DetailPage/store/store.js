@@ -7,22 +7,21 @@ import demoReducer from './app-reducer';
 const customizedKeplerGlReducer = keplerGlReducer
   .initialState({
     uiState: {
-      // hide side panel to disallower user customize the map
-      readOnly: true,
-
-      // customize which map control button to show
+      readOnly: false,
       mapControls: {
         ...uiStateUpdaters.DEFAULT_MAP_CONTROLS,
         visibleLayers: {
-          show: false,
+          show: true,
         },
         mapLegend: {
           show: true,
-          active: true,
+          active: false,
         },
+        // 3D功能
         toggle3d: {
           show: false,
         },
+        // 分屏功能
         splitMap: {
           show: false,
         },
@@ -30,7 +29,6 @@ const customizedKeplerGlReducer = keplerGlReducer
     },
     mapId: 'keplerMap',
   })
-  // handle additional actions
   .plugin({
     HIDE_AND_SHOW_SIDE_PANEL: state => ({
       ...state,

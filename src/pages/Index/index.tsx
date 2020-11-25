@@ -28,7 +28,7 @@ const IndexPage: React.FC<IProps> = (props) => {
 
   const handleGoCompany = () => {
     const currentLocale = getLocale()
-    window.location.href = `/company/${inputRef.current.value}?locale=${currentLocale}&xnkey=index`
+    window.location.href = `/kepler/${inputRef.current.value}?locale=${currentLocale}&xnkey=index`
     // router.push({ pathname: `/company/${inputRef.current.value}`, query: { xnkey: 'index' } });
   }
 

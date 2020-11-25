@@ -12,11 +12,11 @@ module.exports = [
       },
       // 公司页
       {
-        path: '/company',
+        path: '/kepler',
         routes: [
           {
-            path: '/company/:companyId',
-            component: '@/pages/Company/DetailPage',
+            path: '/kepler/:companyId',
+            component: '@/pages/Kepler/DetailPage',
           },
         ],
       },
