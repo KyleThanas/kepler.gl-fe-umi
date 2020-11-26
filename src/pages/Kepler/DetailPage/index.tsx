@@ -5,8 +5,8 @@ import { IGetInitialProps } from 'umi';
 import { ICompanyPageProps } from '@/types/common';
 // import { feRequest as Axios } from '@/utils/axios';
 import { sleep } from '@/utils/sleep';
-import store from './store/store';
-import KeplerMap from '../widgets/keplerMap';
+import store from './store1/store';
+import KeplerMapContainer from '../widgets/keplerMap';
 
 interface IProps {
   data: {
@@ -44,7 +44,7 @@ const CompanyPage: React.FC<ICompanyPageProps & IProps> = props => {
     <DocumentTitle title={pageTitle}>
       <Provider store={store}>
         <>
-          <KeplerMap />
+          <KeplerMapContainer />
         </>
       </Provider>
     </DocumentTitle>

@@ -36,7 +36,6 @@ const KeplerMapContainer: React.FC<IKeplerProps> = props => {
         <AutoSizer>
           {({ height, width }) => (
             <KeplerGl
-              getState={state => state.app.keplerGl}
               mapboxApiAccessToken={MAPBOX_TOKEN}
               id="map1"
               width={width}
@@ -49,6 +48,8 @@ const KeplerMapContainer: React.FC<IKeplerProps> = props => {
 
   );
 }
+
+// export default KeplerMapContainer
 
 const mapStateToProps = state => state;
 const dispatchToProps = dispatch => ({ dispatch });

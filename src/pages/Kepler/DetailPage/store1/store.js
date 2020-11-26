@@ -1,8 +1,7 @@
-import window from 'global/window';
-import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import keplerGlReducer, { uiStateUpdaters } from 'kepler.gl/reducers';
 import { enhanceReduxMiddleware } from 'kepler.gl/middleware';
-import demoReducer from './app-reducer';
+import appReducer from './app-reducer';
 
 const customizedKeplerGlReducer = keplerGlReducer.initialState({
   uiState: {
@@ -14,7 +13,7 @@ const customizedKeplerGlReducer = keplerGlReducer.initialState({
       },
       mapLegend: {
         show: true,
-        active: false,
+        active: true,
       },
       // 3D功能
       toggle3d: {
@@ -31,16 +30,10 @@ const customizedKeplerGlReducer = keplerGlReducer.initialState({
 
 const reducers = combineReducers({
   keplerGl: customizedKeplerGlReducer,
-  app: demoReducer,
+  app: appReducer,
 });
 
 const middlewares = enhanceReduxMiddleware([]);
+const enhancers = [applyMiddleware(...middlewares)];
 
-export const enhancers = [applyMiddleware(...middlewares)];
-
-const initialState = {};
-
-// add redux devtools
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-export default createStore(reducers, initialState, composeEnhancers(...enhancers));
+export default createStore(reducers, {}, compose(...enhancers));
