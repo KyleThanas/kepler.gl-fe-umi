@@ -21,7 +21,6 @@ const KeplerMapContainer: React.FC<IKeplerProps> = props => {
       config: showConfig
     } } = configGalaxy
     console.log('configHive: ', configHive);
-    console.log('showConfig: ', showConfig);
     console.log('galaxyData: ', galaxyData);
     console.log('sampleData: ', sampleData);
 
@@ -37,6 +36,9 @@ const KeplerMapContainer: React.FC<IKeplerProps> = props => {
     jsonToData.data.fields = galaxyData.datasets[0].data.fields;
     jsonToData.data.rows = galaxyData.datasets[0].data.allData;
 
+    console.log('jsonToData: ', jsonToData);
+    console.log('showConfig: ', showConfig);
+
     dispatch(wrapTo(
       'KeplerGlMap',
       addDataToMap({
@@ -45,8 +47,8 @@ const KeplerMapContainer: React.FC<IKeplerProps> = props => {
         // configGalaxy configGalaxy
         config: showConfig,
         option: {
-          centerMap: true,
-          readOnly: false
+          // centerMap: true,
+          // readOnly: false
         },
       })
     ));

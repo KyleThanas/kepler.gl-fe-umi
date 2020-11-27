@@ -6,10 +6,13 @@ export default {
       visState: {
         filters: [
           {
-            dataId: ['nyctrips'],
+            dataId: 'test_trip_data',
             id: 'me',
-            name: ['tpep_pickup_datetime'],
+            name: 'tpep_pickup_datetime',
+            value: [1421289724000, 1421297240000],
             type: 'timeRange',
+            plotType: 'histogram',
+            animationWindow: 'free',
             enlarged: true,
           },
         ],
