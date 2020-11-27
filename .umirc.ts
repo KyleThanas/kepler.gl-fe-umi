@@ -5,6 +5,7 @@ import routes from './umi.routes';
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === 'production';
 const MAPBOX_TOKEN = 'pk.eyJ1IjoieGlhb25pdSIsImEiOiJjamsxNm9oczMwNzk4M3dsYmNsdjIxYm4xIn0.xaNqu5WkkTDwuBR2zk2M9Q'; // eslint-disable-line
+const fleet_url = 'http://fleet.api.niu.local';
 
 export default defineConfig({
   alias: {
@@ -43,6 +44,7 @@ export default defineConfig({
   devtool: isProd ? 'hidden-source-map' : 'source-map',
   define: {
     MAPBOX_TOKEN,
+    fleet_url,
   },
   routes,
   proxy: {

@@ -6,22 +6,44 @@ import { theme } from 'kepler.gl/styles';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import { ThemeProvider } from 'styled-components';
 import { IKeplerProps } from '@/types/common'
-import configHive from './configurations/config-hive';
-import configGalaxy from './configurations/config-galaxy';
+import configHive from './data/hive-config';
+import configGalaxy from './data/galaxy-config';
 import sampleData from './data/sample-data';
-import keplerglData from './data/keplergl-data.json';
+import galaxyData from './data/galaxy-data.json';
 
 const KeplerMapContainer: React.FC<IKeplerProps> = props => {
   const { dispatch } = props;
 
+
   useEffect(() => {
+    // 处理config信息
+    const { config: {
+      config: showConfig
+    } } = configGalaxy
+    console.log('configHive: ', configHive);
+    console.log('showConfig: ', showConfig);
+    console.log('galaxyData: ', galaxyData);
+    console.log('sampleData: ', sampleData);
+
+    // 处理数据信息
+    const jsonToData = {
+      info: {},
+      data: {
+        fields: [],
+        rows: [],
+      }
+    }
+    jsonToData.info = galaxyData.info;
+    jsonToData.data.fields = galaxyData.datasets[0].data.fields;
+    jsonToData.data.rows = galaxyData.datasets[0].data.allData;
+
     dispatch(wrapTo(
-      'map1',
+      'KeplerGlMap',
       addDataToMap({
-        // sampleData keplerglData
-        datasets: sampleData,
+        // sampleData galaxyData
+        datasets: jsonToData,
         // configGalaxy configGalaxy
-        config: configGalaxy,
+        config: showConfig,
         option: {
           centerMap: true,
           readOnly: false
@@ -37,7 +59,7 @@ const KeplerMapContainer: React.FC<IKeplerProps> = props => {
           {({ height, width }) => (
             <KeplerGl
               mapboxApiAccessToken={MAPBOX_TOKEN}
-              id="map1"
+              id="KeplerGlMap"
               width={width}
               height={height}
             />

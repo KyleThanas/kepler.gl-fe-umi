@@ -98,6 +98,7 @@ const setInterceptors = (instance: AxiosInstance): AxiosInstance => {
   return instance;
 };
 
-const feInstance = Axios.create({ baseURL: '/' });
+const fleet_url = 'http://fleet.api.niu.local';
+const apiInstance = Axios.create({ baseURL: fleet_url });
 
-export const feRequest = setInterceptors(feInstance);
+export const apiRequest = setInterceptors(apiInstance);

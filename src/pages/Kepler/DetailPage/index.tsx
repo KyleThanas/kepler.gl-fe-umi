@@ -3,7 +3,8 @@ import DocumentTitle from 'react-document-title';
 import { Provider } from 'react-redux';
 import { IGetInitialProps } from 'umi';
 import { ICompanyPageProps } from '@/types/common';
-// import { feRequest as Axios } from '@/utils/axios';
+// import { apiRequest as Axios } from '@/utils/axios';
+// import Axios from 'axios';
 import { sleep } from '@/utils/sleep';
 import store from './store1/store';
 import KeplerMapContainer from '../widgets/keplerMap';
@@ -39,6 +40,21 @@ const CompanyPage: React.FC<ICompanyPageProps & IProps> = props => {
     } = props;
     setPageTitle(companyId + title)
   }, [])
+
+
+  // const getData = async (): Promise<void> => {
+  //   const { data } = await Axios.post('/api/statistics/type', {
+  //     begin: 1605456000000,
+  //     companyId: "3c00a23f954439b39618aaf1b94a0ecc",
+  //     end: 1605715200000,
+  //     type: "rodeHeatMap",
+  //   });
+  //   console.log('data: ', data);
+  // };
+
+  // useEffect(() => {
+  //   getData()
+  // }, [])
 
   return (
     <DocumentTitle title={pageTitle}>

@@ -7,14 +7,10 @@ export default {
         filters: [
           {
             dataId: ['nyctrips'],
-            id: '09vn5a0of',
+            id: 'me',
             name: ['tpep_pickup_datetime'],
             type: 'timeRange',
-            value: [1421300098000, 1421352890000],
-            enlarged: false,
-            plotType: 'histogram',
-            animationWindow: 'free',
-            yAxis: null,
+            enlarged: true,
           },
         ],
         layers: [
