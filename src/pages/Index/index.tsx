@@ -18,11 +18,12 @@ const IndexPage: React.FC<IProps> = (props) => {
   const intl = useIntl();
   const inputRef = useRef<HTMLInputElement>();
   const pageTitle = useMemo(() => {
-    const {
-      data: {
-        title
-      }
-    } = props
+    // const {
+    //   data: {
+    //     title = '首页'
+    //   }
+    // } = props
+    const title = props.data?.title || '首页'
     return title;
   }, []);
 

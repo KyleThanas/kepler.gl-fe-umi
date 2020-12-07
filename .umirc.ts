@@ -32,7 +32,7 @@ export default defineConfig({
   ignoreMomentLocale: true,
   hash: isProd,
   base: './',
-  // publicPath: './',
+  publicPath: './',
   history: {
     type: 'browser',
   },
